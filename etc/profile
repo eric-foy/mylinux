@@ -1,0 +1,92 @@
+# System wide environment variables and startup programs.
+export LANG=en_US.UTF-8
+export HISTSIZE=20000
+export AUDIODRIVER=alsa
+export BROWSER=qutebrowser
+export EDITOR=vim
+
+export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/opt/rustc/bin:/opt/ant/bin:/opt/qt5/bin:/opt/jdk/bin:/opt/texlive/2019/bin/x86_64-linux:/opt/avr/bin:/opt/matlab/bin:/opt/google-cloud-sdk/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools/bin:/opt/gradle/bin:/opt/go/bin
+export NODE_PATH=/usr/lib/node_modules
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig:./usr/share/pkgconfig:/opt/qt5/lib/pkgconfig:/opt/texlive/2019/lib/pkgconfig
+export MANPATH=/man:/usr/share/man:/opt/jdk/man:/opt/texlive/2019/texmf-dist/doc/man:/opt/avr-binutils/share/man
+export INFOPATH=/usr/share/info:/opt/texlive/2019/texmf-dist/doc/info
+
+export MAKEFLAGS='-j 4'
+export NINJAJOBS='-j 4'
+export TESTSUITEFLAGS='-j 4'
+
+export JAVA_HOME=/opt/jdk
+export ANT_HOME=/opt/ant
+export QT5DIR=/opt/qt5
+
+export PYTHONDOCS=/usr/share/doc/python-3/html
+
+export PAGER=less
+export MANPAGER=less
+export LESS='--line-numbers --tilde --RAW-CONTROL-CHARS'
+export RESTIC_PASSWORD_COMMAND='pass restic'
+
+# Google Cloud
+export CLOUDSDK_ROOT_DIR=/opt/google-cloud-sdk
+export CLOUDSDK_PYTHON=python
+export CLOUDSDK_PYTHON_ARGS=-S
+export PATH=$CLOUDSDK_ROOT_DIR/bin:$PATH
+export GOOGLE_CLOUD_SDK_HOME=$CLOUDSDK_ROOT_DIR
+export GOOGLE_APPLICATION_CREDENTIALS="/home/cambion/.config/gcloud/service_account.json"
+
+# Set some defaults for graphical systems
+export XKB_DEFAULT_LAYOUT=us
+export XKB_DEFAULT_VARIANT=dvp
+export XDG_DATA_DIRS=${XDG_DATA_DIRS:-/usr/share/}
+export XDG_CONFIG_DIRS=${XDG_CONFIG_DIRS:-/etc/xdg/}
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/tmp/xdg-$USER}
+
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # Start bold mode
+export LESS_TERMCAP_me=$(tput sgr0) # End all mode 
+export LESS_TERMCAP_so=$(tput smso) # Start standout mode
+export LESS_TERMCAP_se=$(tput rmso) # End standout mode
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # Start underlining
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0) # End underlining
+export GROFF_NO_SGR=1 
+
+bind Space:magic-space
+
+# Setup a red prompt for root and a green one for users.
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+if [[ $EUID == 0 ]]
+then
+    PS1="$RED[\w]$NORMAL"
+else
+    PS1="$GREEN[\w]$NORMAL"
+fi
+unset RED GREEN NORMAL
+
+# Cache passphrase to bypass pass prompt.
+if ! pgrep gpg-agent > /dev/null
+then
+    gpg-agent --daemon
+    gpg-preset-passphrase --preset --passphrase 'jpgqKp/@' 53237B346FCF6BAB5961863361231D5DF66AA2B3
+fi
+
+# Setup for /bin/ls and /bin/grep to support color, the alias is in /etc/bashrc.
+if [ -f "/etc/dircolors" ] ; then
+    eval $(dircolors -b /etc/dircolors)
+fi
+
+if [ -f "$HOME/.dircolors" ] ; then
+    eval $(dircolors -b $HOME/.dircolors)
+fi
+
+# By default, the umask should be set.
+if [ "$(id -gn)" = "$(id -un)" -a $EUID -gt 99 ] ; then
+    umask 002
+else
+    umask 022
+fi
+
+set extglob
+#short_date=$(/bin/date +%m%d%y)
+#exec {BASH_XTRACEFD}>>"/tmp/bash.$short_date".log
+#set -x

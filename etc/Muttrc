@@ -1,0 +1,61 @@
+# IMAP folders
+set my_drafts="Drafts"
+set my_drafts_noquote="Drafts"
+set my_sent="Sent<quote-char><space>Items"
+set my_sent_noquote="Sent Items"
+set my_trash="Deleted<quote-char><space>Items"
+set my_trash_noquote="Deleted Items"
+
+# IMAP config
+set folder = "imaps://outlook.office365.com/"
+set imap_user = "foy.8@wright.edu"
+set imap_pass = `pass auth.wright.edu/w004ebf`
+set spoolfile = +INBOX
+set postponed = +$my_drafts_noquote
+set record = +$my_sent_noquote
+set trash = +$my_trash_noquote
+mailboxes = +INBOX
+
+ignore *
+unignore from date subject to cc
+
+# Store message headers locally to speed things up.
+# If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
+set header_cache = "~/.local/share/mutt/"
+
+# Store messages locally to speed things up, like searching message bodies.
+# Can be the same folder as header_cache.
+# This will cost important disk usage according to your e-mail amount.
+set message_cachedir = "~/.local/share/mutt/"
+
+# Allow Mutt to open a new IMAP connection automatically.
+unset imap_passive
+
+# Keep the IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 300
+
+# SMTP config
+set realname = "Foy, Eric Brent"
+set from = "foy.8@wright.edu"
+set smtp_pass = `pass auth.wright.edu/w004ebf`
+set hostname = "wright.edu"
+set smtp_url = "smtp://foy.8@wright.edu@outlook.office365.com:587/"
+set ssl_force_tls = yes
+set smtp_authenticators = "login"
+
+# Text editor
+#set editor="vim"
+
+set pager_stop=yes
+set wait_key=no
+
+# View HTML
+#set mailcap_path = "/etc/mailcap"
+auto_view text/html
+alternative_order text/plain text/html
+
+macro pager \cb "\
+<enter-command> set my_pipe_decode=\$pipe_decode pipe_decode<Enter>\
+<pipe-message> urlview<Enter>\
+<enter-command> set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>" \
+"call urlview to extract URLs out of a message"

@@ -1,0 +1,117 @@
+[options]
+# Allow the output of bold characters when the bold escape sequence appears
+allow_bold = true
+
+#Have the terminal beep on the terminal bell.
+audible_bell = false
+
+#Set the default browser for opening links. If its not set, $BROWSER is read. If that's not set, url hints will be disabled.
+browser = qutebrowser
+
+#Auto-detected URLs can be clicked on to open them in your browser. Only enabled if a browser is configured or detected.
+clickable_url = true
+
+#Enable support for applications to mark text as hyperlinks. Requires clickable_url to be set.
+hyperlinks = true
+
+#Settings dynamic title allows the terminal and the shell to update the terminal's title.
+dynamic_title = true
+
+#Whether to hide url hints not matching input in url hints mode.
+filter_unmatched_urls = true
+
+#The font description for the terminal's font.
+font = Inconsolata 10
+#font = Hack 8
+
+#Enables entering fullscreen mode by pressing F11.
+fullscrene = true
+
+#The default window geometry for new terminal windows.
+#geometry = 640x480
+
+#The name of the icon to be used for the terminal process.
+icon_name = terminal
+
+#Emit escape sequences for extra keys, like the modifyOtherKeys resource for xterm(1).
+modify_other_keys = false
+
+#Automatically hide the mouse pointer when you start typing.
+#mouse_autohide = false
+
+#Set the number of lines to limit the terminal's scrollback. Setting the number of lines to 0 disables this feature, a negative value makes the scrollback "infinite".
+scrollback_lines = 10000
+
+#Specify scrollbar visibility and position. Accepts off, left and right.
+scrollbar = off 
+
+#Scroll to the bottom automatically when a key is pressed.
+scroll_on_keystroke = true
+
+#Scroll to the bottom when the shell generates output.
+scroll_on_output = false
+
+#Search from top again when you hit the bottom.
+search_wrap = false
+
+#Enable size hints. Locks the terminal resizing to increments of the terminal's cell size. Requires a window manager that respects scroll hints.
+size_hints = false
+
+#Sets the window as urgent on the terminal bell.
+urgent_on_bell = true
+
+[hints]
+#padding = 2
+#border = #ABA800
+#border_width = 0.5
+#roundness = 8.0
+
+[colors]
+# Base16 London Tube
+# Author: Jan T. Sott
+
+foreground          = #d9d8d8
+foreground_bold     = #e7e7e8
+cursor              = #e7e7e8
+cursor_foreground   = #231f20
+background          = #231f20
+
+# 16 color space
+
+# Black, Gray, Silver, White
+color0  = #231f20
+color8  = #737171
+color7  = #d9d8d8
+color15 = #ffffff
+
+# Red
+color1  = #ee2e24
+color9  = #ee2e24
+
+# Green
+color2  = #00853e
+color10 = #00853e
+
+# Yellow
+color3  = #ffd204
+color11 = #ffd204
+
+# Blue
+color4  = #009ddc
+color12 = #009ddc
+
+# Purple
+color5  = #98005d
+color13 = #98005d
+
+# Teal
+color6  = #85cebc
+color14 = #85cebc
+
+# Extra colors
+color16 = #f386a1
+color17 = #b06110
+color18 = #1c3f95
+color19 = #5a5758
+color20 = #959ca1
+color21 = #e7e7e8

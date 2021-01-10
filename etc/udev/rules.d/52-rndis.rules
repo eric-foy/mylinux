@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="net", DRIVERS=="rndis_host", RUN+="/sbin/dhcpcd $env{INTERFACE}"

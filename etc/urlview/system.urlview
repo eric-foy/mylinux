@@ -1,0 +1,3 @@
+COMMAND qutebrowser %s 2>/dev/null &
+WRAP yes
+QUITONLAUNCH

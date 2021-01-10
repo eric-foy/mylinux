@@ -1,0 +1,16 @@
+# TI-83+ SilverLink
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0451", ATTR{idProduct}=="e001", MODE="0660", GROUP="plugdev"
+
+# UltraMic
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0869", ATTR{idProduct}=="0308", MODE="0660", GROUP="plugdev"
+
+# Android
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0660", GROUP="plugdev"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0660", GROUP="plugdev"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="19d2", MODE="0660", GROUP="plugdev"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="05c6", MODE="0660", GROUP="plugdev"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0660", GROUP="plugdev"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0660", GROUP="plugdev"
+
+# RTL-SDR
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE:="0666"

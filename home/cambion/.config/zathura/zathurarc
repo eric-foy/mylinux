@@ -1,0 +1,8 @@
+set selection-clipboard clipboard
+set scroll-full-overlap 0.2
+set scroll-step 80
+set font 'Inconsolata 10'
+
+set show-recent 4
+
+include base16-tube.config

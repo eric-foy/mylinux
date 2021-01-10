@@ -1,0 +1,253 @@
+# Written for Beyond Linux From Scratch
+# by James Robertson <jameswrobertson@earthlink.net>
+# updated by Bruce Dubbs <bdubbs@linuxfromscratch.org>
+
+# System wide aliases and functions.
+
+alias rm='rm --interactive=never'
+alias tar='tar --one-top-level'
+#alias xclip='xclip -selection clipboard -rmlastnl'
+alias xclip='xclip -rmlastnl'
+alias youtube-dl='youtube-dl --restrict-filenames -i -o "%(title)s.%(id)s.%(ext)s"'
+alias youtube-dl-subs='youtube-dl --skip-download --write-auto-sub'
+alias wpa_supplicant-scan='sudo wpa_supplicant -i wlp1s0 -C /run/wpa_supplicant -B'
+alias wpa_supplicant-start='sudo wpa_supplicant -i wlp1s0 -c /etc/sysconfig/wpa_supplicant-wlp1s0.conf -d'
+alias topdf='soffice --headless --convert-to pdf '
+alias disp-reset='xset dpms force off && xset dpms force on'
+alias dump-eth='/usr/sbin/tcpdump -i enp0s25 -w /var/log/tcpdump/$(date '+%Y-%d-%m-%H-%M-%S').pcap'
+alias ls='ls --color=always --time-style=iso'
+alias grep='grep --color=auto'
+alias wget-mirror='wget --mirror --page-requisites --adjust-extension --no-parent --convert-links'
+alias external-ip='curl https://ipinfo.io/ip'
+alias unbound='sudo unbound -c /var/lib/unbound/unbound.conf'
+alias urec='sox -V3 -D -t alsa front:CARD=r4 $(date +%Y-%d-%m-%H-%M-%S).flac'
+alias ffmpeg='ffmpeg -hide_banner'
+alias ffprobe='ffprobe -hide_banner'
+
+function porg-tar
+{
+    porg -zf "$1" | xargs tar -cPf "$1.tar.gz"
+}
+
+function ffmpeg-split_stereo
+{
+    name=$(basename "$1")
+    ext=${name##*.}
+    path=${name%.*}
+    ffmpeg -i "$1" -filter_complex "[0:a]channelsplit=channel_layout=stereo[left][right]" -map "[left]" "$path.FL.$ext" -map "[right]" "$path.FR.$ext"
+}
+
+function ffmpeg-extract_audio
+{
+    ffmpeg -i "$1" -vn -acodec copy "${1%.*}".aac
+}
+
+function ffmpeg-concat
+{
+    num_files=$(("$#" - 1))
+    args=( "$@" )
+    chain1=""
+    chain2=""
+    for ((i=0; i<$num_files; i++))
+    do
+        arg=${args[$i]}
+        chain1="$chain1 -i $arg"
+        chain2="$chain2[$i:v] [$i:a] "
+    done
+
+    cmd="ffmpeg$chain1 -filter_complex \"$chain2 concat=n=$num_files:v=1:a=1 [v] [a]\" -map \"[v]\" -map \"[a]\" ${args[$num_files]}"
+    echo $cmd
+}
+
+function ffmpeg-blank
+{
+    ffmpeg -f lavfi -i color=c=black:s=640x480:r=5 -i "$1" -crf 0 -c:a copy -shortest "$2"
+}
+
+function my-heimdall_flash
+{
+    local p=""
+    if [ -f "NON-HLOS.bin" ]; then
+        p="$p --APNHLOS NON-HLOS.bin"
+    fi
+    if [ -f "modem.bin" ]; then
+        p="$p --MDM modem.bin"
+    fi
+    if [ -f "sbl1.mbn" ]; then
+        p="$p --SBL1 sbl1.mbn"
+    fi
+    if [ -f "sbl2.mbn" ]; then
+        p="$p --SBL2 sbl2.mbn"
+    fi
+    if [ -f "sbl3.mbn" ]; then
+        p="$p --SBL3 sbl3.mbn"
+    fi
+    if [ -f "aboot.mbn" ]; then
+        p="$p --ABOOT aboot.mbn"
+    fi
+    if [ -f "rpm.mbn" ]; then
+        p="$p --RPM rpm.mbn"
+    fi
+    if [ -f "tz.mbn" ]; then
+        p="$p --TZ tz.mbn"
+    fi
+    if [ -f "system.img.ext4" ]; then
+        p="$p --SYSTEM system.img.ext4"
+    fi
+    if [ -f "cache.img.ext4" ]; then
+        p="$p --CACHE cache.img.ext4"
+    fi
+    if [ -f "boot.img" ]; then
+        p="$p --BOOT boot.img"
+    fi
+    if [ -f "recovery.img" ]; then
+        p="$p --RECOVERY recovery.img"
+    fi
+    if [ -f "hidden.img.ext4" ]; then
+        p="$p --HIDDEN hidden.img.ext4"
+    fi
+    heimdall flash $p
+}
+
+function my-rtl_power-direct
+{
+    rtl_power -D -g 20 -p '-8' -f $1 /var/log/rtl/power.$(date '+%Y-%m-%d-%H-%M-%S').$1.csv
+}
+
+function my-rtl_power
+{
+    rtl_power -g 20 -p '-8' -f $1 /var/log/rtl/power.$(date '+%Y-%m-%d-%H-%M-%S').$1.csv
+}
+
+function my_rtl_sdr
+{
+    rtl_sdr -D 2 -g 40 -p '-8' -f $1 /var/log/rtl/sdr.$(date '+%Y-%m-%d-%H-%M-%S').$1.raw
+}
+
+function my_rtl_fm
+{
+    rtl_fm -M am -g 40 -p '-8' -E direct -f $1 /var/log/rtl/am.$(date '+%Y-%m-%d-%H-%M-%S').$1.raw
+}
+
+function adb-msg
+{
+    adb shell ime set com.android.adbkeyboard/.AdbIME >/dev/null
+    while read line
+    do
+        adb shell am broadcast -a ADB_INPUT_TEXT --es msg \'"$line"\' >/dev/null
+        adb shell am broadcast -a ADB_EDITOR_CODE --ei code 4 >/dev/null
+    done
+    adb shell ime reset >/dev/null
+}
+
+function adb-sms
+{
+    NUMBER="$1"
+    shift
+    MSG="$@"
+    adb shell am startservice --user 0 -n com.android.shellms/.sendSMS -e contact $NUMBER -e msg $MSG
+}
+
+function adb-uninstall
+{
+    #adb shell su -c pm uninstall --user 0 "$1"
+    adb shell pm uninstall --user 0 "$1"
+}
+
+function adb-ls-packages
+{
+    #adb shell su -c pm list packages | awk -F : '{print $2}'
+    adb shell pm list packages | awk -F : '{print $2}'
+}
+
+function adb-backup
+{
+    # adb shell bu ...
+    adb backup -f backup.adb -apk -obb -all -nosystem
+}
+
+function disp-off
+{
+    if [ $DISPLAY ]
+    then
+        xset dpms force off
+    else
+        setterm --blank 1
+    fi
+}
+
+function porg-install
+{
+    cmd="${2:-make install}"
+    fpath=$(realpath "$1")
+    pkg_name=$(basename "$fpath")
+    sudo porg -lp "$pkg_name" "$cmd"
+}
+
+function mdopen
+{
+    outfile="${1%.md}.html"
+    md2html --full-html "$1" > $outfile
+    exec qutebrowser $outfile 2>&1 1>/dev/null &
+}
+
+function clip-date
+{
+    echo $(date '+%Y-%m-%d') | xclip
+}
+
+function swap-files
+{
+    tmp_name=$(mktemp -u "$1_XXXXXX")
+    mv "$1" "$tmp_name"
+    mv "$2" "$1"
+    mv "$tmp_name" "$2"
+}
+
+function lfs-log
+{
+    NAME=${1%.tar.*}
+    script $NAME.script
+    echo filtering $NAME.script
+    ansifilter -o $NAME.log $NAME.script
+    echo filtered file saved to $NAME.script
+    rm -v $NAME.script
+}
+
+# System wide environment variables and startup programs should go into
+# /etc/profile.  Personal environment variables and startup programs
+# should go into ~/.bash_profile.  Personal aliases and functions should
+# go into ~/.bashrc
+
+# Provides colored /bin/ls and /bin/grep commands.  Used in conjunction
+# with code in /etc/profile.
+
+alias ls='ls --color=always --time-style=iso'
+alias grep='grep --color=auto'
+
+# Provides prompt for non-login shells, specifically shells started
+# in the X environment. [Review the LFS archive thread titled
+# PS1 Environment Variable for a great case study behind this script
+# addendum.]
+
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+if [[ $EUID == 0 ]] ; then
+    PS1="$RED[\w]$NORMAL"
+else
+    PS1="$GREEN[\w]$NORMAL"
+fi
+unset RED GREEN NORMAL
+
+source /usr/share/bash-completion/bash_completion
+
+if shopt -q progcomp; then
+    for script in /etc/bash_completion.d/* ; do
+        if [ -r $script ] ; then
+            . $script
+        fi
+    done
+fi
+
+#shopt -s checkwinsize

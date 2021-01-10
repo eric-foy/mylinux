@@ -1,0 +1,48 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          thinkfan
+# Required-Start:    $remote_fs
+# Required-Stop:     $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: thinkfan initscript
+# Description:       starts thinkfan if enabled in /etc/sysconfig/thinkfan
+### END INIT INFO
+
+NAME=thinkfan
+DAEMON=/usr/sbin/$NAME
+# This one is compiled-in, you can't change it here!
+PIDFILE=/var/run/$NAME.pid
+
+. /lib/lsb/init-functions
+
+case "$1" in
+    start)
+        log_info_msg "Starting $NAME"
+        start_daemon -p $PIDFILE $DAEMON -q
+        evaluate_retval
+        ;;
+    stop)
+        log_info_msg "Stopping $NAME"
+        killproc -p $PIDFILE $DAEMON
+        evaluate_retval
+        ;;
+    reload)
+        log_info_msg "Reloading $NAME"
+        killproc -p $PIDFILE $DAEMON -HUP
+        evaluate_retval
+        ;;
+    restart)
+        $0 stop
+        sleep 1
+        $0 start
+        ;;
+    status)
+        statusproc "$DAEMON"
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|reload|restart|status}"
+        exit 1
+        ;;
+esac

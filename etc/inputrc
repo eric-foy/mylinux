@@ -1,0 +1,18 @@
+set editing-mode vi
+
+set page-completions off
+
+set meta-flag on
+set input-meta on
+set convert-meta off
+set output-meta on
+
+$if mode=vi
+    set keymap vi-command
+    j: history-search-forward
+    k: history-search-backward
+
+    set keymap vi-insert
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+$endif

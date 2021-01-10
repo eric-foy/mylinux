@@ -1,0 +1,10 @@
+#!/bin/sh
+
+sysresources=/etc/X11/app-defaults/Xresources
+if [ -f $sysresources ]; then
+    xrdb -merge $sysresources
+fi
+
+unclutter --ignore-scrolling --fork
+#dbus-launch
+exec i3
