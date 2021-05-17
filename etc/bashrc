@@ -6,10 +6,9 @@
 
 alias rm='rm --interactive=never'
 alias tar='tar --one-top-level'
-#alias xclip='xclip -selection clipboard -rmlastnl'
-alias xclip='xclip -rmlastnl'
-alias youtube-dl='youtube-dl --restrict-filenames -i -o "%(title)s.%(id)s.%(ext)s"'
-alias youtube-dl-subs='youtube-dl --skip-download --write-auto-sub'
+alias xclip='xclip -selection clipboard -rmlastnl'
+alias youtube-dl='youtube-dl --restrict-filenames -o "%(title)s.%(id)s.%(ext)s"'
+alias dl-subs='youtube-dl --skip-download --write-auto-sub'
 alias wpa_supplicant-scan='sudo wpa_supplicant -i wlp1s0 -C /run/wpa_supplicant -B'
 alias wpa_supplicant-start='sudo wpa_supplicant -i wlp1s0 -c /etc/sysconfig/wpa_supplicant-wlp1s0.conf -d'
 alias topdf='soffice --headless --convert-to pdf '
@@ -23,6 +22,32 @@ alias unbound='sudo unbound -c /var/lib/unbound/unbound.conf'
 alias urec='sox -V3 -D -t alsa front:CARD=r4 $(date +%Y-%d-%m-%H-%M-%S).flac'
 alias ffmpeg='ffmpeg -hide_banner'
 alias ffprobe='ffprobe -hide_banner'
+alias chrome='/opt/chromeium/chrome --no-sandbox'
+alias ls='ls --color=always --time-style=iso'
+alias grep='grep --color=auto'
+
+function dl-clipboard
+{
+    url=$(xclip -selection clipboard -o)
+    youtube-dl --restrict-filenames -o "%(title)s.%(id)s.%(ext)s" "$url"
+}
+
+function date-one-time-clocksync
+{
+    googles_date=$(curl -s --head http://google.com | grep ^Date: | sed 's/Date: //g')
+    sudo date -s "$googles_date"
+    sudo hwclock --systohc
+}
+
+function rec-webcam
+{
+    ffmpeg -i /dev/video2 -f v4l2 -f alsa -ac 1 -i default:CARD=Device "$1"
+}
+
+function deb-extract
+{
+    ar p "$1" data.tar.xz | tar --one-top-level="${1%.deb}" -Jx
+}
 
 function porg-tar
 {
@@ -107,26 +132,6 @@ function my-heimdall_flash
         p="$p --HIDDEN hidden.img.ext4"
     fi
     heimdall flash $p
-}
-
-function my-rtl_power-direct
-{
-    rtl_power -D -g 20 -p '-8' -f $1 /var/log/rtl/power.$(date '+%Y-%m-%d-%H-%M-%S').$1.csv
-}
-
-function my-rtl_power
-{
-    rtl_power -g 20 -p '-8' -f $1 /var/log/rtl/power.$(date '+%Y-%m-%d-%H-%M-%S').$1.csv
-}
-
-function my_rtl_sdr
-{
-    rtl_sdr -D 2 -g 40 -p '-8' -f $1 /var/log/rtl/sdr.$(date '+%Y-%m-%d-%H-%M-%S').$1.raw
-}
-
-function my_rtl_fm
-{
-    rtl_fm -M am -g 40 -p '-8' -E direct -f $1 /var/log/rtl/am.$(date '+%Y-%m-%d-%H-%M-%S').$1.raw
 }
 
 function adb-msg
@@ -214,40 +219,16 @@ function lfs-log
     rm -v $NAME.script
 }
 
-# System wide environment variables and startup programs should go into
-# /etc/profile.  Personal environment variables and startup programs
-# should go into ~/.bash_profile.  Personal aliases and functions should
-# go into ~/.bashrc
-
-# Provides colored /bin/ls and /bin/grep commands.  Used in conjunction
-# with code in /etc/profile.
-
-alias ls='ls --color=always --time-style=iso'
-alias grep='grep --color=auto'
-
-# Provides prompt for non-login shells, specifically shells started
-# in the X environment. [Review the LFS archive thread titled
-# PS1 Environment Variable for a great case study behind this script
-# addendum.]
-
+# Setup a red prompt for root and a green one for users.
 NORMAL="\[\e[0m\]"
 RED="\[\e[1;31m\]"
 GREEN="\[\e[1;32m\]"
-if [[ $EUID == 0 ]] ; then
+if [[ $EUID == 0 ]]
+then
     PS1="$RED[\w]$NORMAL"
 else
     PS1="$GREEN[\w]$NORMAL"
 fi
 unset RED GREEN NORMAL
-
-source /usr/share/bash-completion/bash_completion
-
-if shopt -q progcomp; then
-    for script in /etc/bash_completion.d/* ; do
-        if [ -r $script ] ; then
-            . $script
-        fi
-    done
-fi
 
 #shopt -s checkwinsize

@@ -1,0 +1,8 @@
+#!/bin/bash
+chattr -i /etc/resolv.conf
+systemctl start wpa_supplicant@wlp1s0
+systemctl start dhcpcd@wlp1s0
+curl -d "auth_user=guest&auth_pass=flex0502&svcid=5c7cf3cf3ce6f&accept=Submit&agreetoterms=yes" -X POST http://zlk.cust.blueprintrf.com:8000
+echo nameserver 8.8.4.4 > /etc/resolv.conf
+echo nameserver 8.8.8.8 >> /etc/resolv.conf
+chattr +i /etc/resolv.conf

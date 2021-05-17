@@ -1,0 +1,3 @@
+#!/bin/bash
+systemctl stop dhcpcd@wlp1s0
+systemctl stop wpa_supplicant@wlp1s0

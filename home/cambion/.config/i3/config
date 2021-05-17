@@ -1,21 +1,21 @@
 set $mod Mod4
 
-set_from_resource $base00 color0
-set_from_resource $base01 color18
-set_from_resource $base02 color19
-set_from_resource $base03 color8
-set_from_resource $base04 color20
-set_from_resource $base05 color7
-set_from_resource $base06 color21
-set_from_resource $base07 color15
-set_from_resource $base08 color9
-set_from_resource $base09 color16
-set_from_resource $base0A color11
-set_from_resource $base0B color10
-set_from_resource $base0C color14
-set_from_resource $base0D color12
-set_from_resource $base0E color13
-set_from_resource $base0F color17
+set $base00 #231f20
+set $base01 #1c3f95
+set $base02 #5a5758
+set $base03 #737171
+set $base04 #959ca1
+set $base05 #d9d8d8
+set $base06 #e7e7e8
+set $base07 #ffffff
+set $base08 #ee2e24
+set $base09 #f386a1
+set $base0A #ffd204
+set $base0B #00853e
+set $base0C #85cebc
+set $base0D #009ddc
+set $base0E #98005d
+set $base0F #b06110
 
 font pango:Inconsolata 10
 
@@ -33,7 +33,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+backslash exec urxvt -e ranger
 bindsym $mod+BackSpace exec zathura
 bindsym $mod+space exec qutebrowser
-bindsym $mod+e exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 12 -fn 'Inconsolata-12' -nb '$base00' -nf '$base05' -sb '$base0A' -sf '$base00'"
+bindsym $mod+e exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 12 -fn 'sans-10' -nb '$base00' -nf '$base05' -sb '$base0A' -sf '$base00'"
 
 bindsym $mod+Shift+d kill
 
@@ -59,45 +59,27 @@ bindsym $mod+g layout tabbed
 bindsym $mod+c layout toggle split
 bindsym $mod+o floating toggle
 
-bindsym $mod+ampersand workspace 1
-bindsym $mod+bracketleft workspace 2
-bindsym $mod+braceleft workspace 3
-bindsym $mod+braceright workspace 4
-bindsym $mod+parenleft workspace 5
-bindsym $mod+equal workspace 6
-bindsym $mod+asterisk workspace 7
-bindsym $mod+parenright workspace 8
-bindsym $mod+plus workspace 9
-bindsym $mod+bracketright workspace 10
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
-bindsym $mod+Shift+ampersand move container to workspace 1
-bindsym $mod+Shift+bracketleft move container to workspace 2
-bindsym $mod+Shift+braceleft move container to workspace 3
-bindsym $mod+Shift+braceright move container to workspace 4
-bindsym $mod+Shift+1 move container to workspace 5
-bindsym $mod+Shift+equal move container to workspace 6
-bindsym $mod+Shift+asterisk move container to workspace 7
-bindsym $mod+Shift+2 move container to workspace 8
-bindsym $mod+Shift+plus move container to workspace 9
-bindsym $mod+Shift+bracketright move container to workspace 10
-
-#bar {
-#    output LVDS1
-#    status_command i3status
-#
-#    colors {
-#        background $base00
-#        separator  $base01
-#        statusline $base04
-#
-#        # State             Border  BG      Text
-#        focused_workspace   $base05 $base0D $base00
-#        active_workspace    $base05 $base03 $base00
-#        inactive_workspace  $base03 $base01 $base05
-#        urgent_workspace    $base08 $base08 $base00
-#        binding_mode        $base00 $base0A $base00
-#   }
-#}
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 # Property Name         Border  BG      Text    Indicator Child Border
 client.focused          $base0D $base0D $base00 $base0D $base0D

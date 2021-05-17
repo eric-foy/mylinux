@@ -1,0 +1,10 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/sda2 UUID=d89a9e9b-90ad-413e-96fe-b19be0e43892
+LABEL=LINUX         	/         	ext4      	rw,relatime	0 1
+
+# /dev/sda1 UUID=3f5f7d20-e54c-4336-8686-68cb7f37ecef
+LABEL=BOOT          	/boot     	ext4      	rw,relatime	0 2
+

@@ -76,19 +76,14 @@ http://festvox.org/docs/manual-2.4.0/festival.html#Top festvox.org
 https://github.com/Distrotech/mgetty/tree/master/voice/mvm mgetty/voice/mvm at master · Distrotech/mgetty · GitHub
 https://f-droid.org/en/packages/com.zegoggles.smssync/ SMS Backup+ | F-Droid - Free and Open Source Android App Repository
 http://hyperphysics.phy-astr.gsu.edu/hbase/hframe.html HyperPhysics
-https://stackoverflow.com/questions/17580199/sending-a-sms-on-android-through-adb Sending a SMS on Android through ADB - Stack Overflow
 https://gist.github.com/Ademking/5351ed43a7c48575fe5e6de477d9781f 💚 Android : Send SMS through ADB · GitHub
-https://f-droid.org/en/packages/edu.harvard.android.mmskeeper/ MMSKeeper | F-Droid - Free and Open Source Android App Repository
-https://stackoverflow.com/questions/12266374/backup-full-sms-mms-contents-via-adb android - backup full sms/mms contents via adb - Stack Overflow
 https://f-droid.org/en/packages/net.tjado.passwdsafe/ Authorizer | F-Droid - Free and Open Source Android App Repository
-https://github.com/ckesc/AdbKeyMonkey GitHub - ckesc/AdbKeyMonkey: Tool for control android device from PC keyboard
 https://github.com/gblargg/adb-usb GitHub - gblargg/adb-usb: ADB Keyboard to USB using Teensy
 https://github.com/NeuroTechX/awesome-bci GitHub - NeuroTechX/awesome-bci: Curated Collection of BCI resources
 https://www.gtec.at/product/bcisystem/ BCI SYSTEM | g.tec medical engineering
 https://www.emotiv.com/product/emotiv-epoc-14-channel-mobile-eeg/ EMOTIV EPOC+ 14 Channel Mobile Brainwear® | EMOTIV
 https://www.sciencebuddies.org/science-fair-projects/project-ideas/Chem_p096/chemistry/how-to-make-soap The Chemistry of Clean: Make Your Own Soap to Study Soap Synthesis | Science Project
 https://www.erowid.org/archive/rhodium/chemistry/hydriodic.argox.html 57% Hydriodic Acid - Step by Step Write-Up - [www.rhodium.ws]
-https://www.amazon.com/Spoken-Language-Processing-Algorithm-Development/dp/0130226165 Spoken Language Processing: A Guide to Theory, Algorithm and System Development: Huang, Xuedong, Acero, Alex, Hon, Hsiao-Wuen: 0076092010418: Amazon.com: Books
 https://dsp.stackexchange.com/questions/60334/preprocess-sound-for-voice-recognition-in-pocket-sphinx-on-raspberry-pi-3 audio - Preprocess sound for voice recognition in Pocket Sphinx on Raspberry Pi 3 - Signal Processing Stack Exchange
 https://github.com/alphacep/vosk GitHub - alphacep/vosk: VOSK Speech Recognition Toolkit
 https://github.com/oscarknagg/voicemap GitHub - oscarknagg/voicemap: Identifying people from small audio fragments
@@ -133,7 +128,6 @@ https://www.roe.ch/SSLsplit SSLsplit - transparent SSL/TLS interception (SSLspli
 https://www.archlinux.org/packages/community/x86_64/stunnel/ Arch Linux - stunnel 5.56-2 (x86_64)
 https://www.archlinux.org/packages/community/x86_64/sslsplit/ Arch Linux - sslsplit 0.5.2-3 (x86_64)
 https://www.pks.mpg.de/~mueller/docs/suse10.1/suselinux-manual_en/manual/cha.pam.html Chapter 16. Authentication with PAM
-https://f-droid.org/en/packages/com.android.adbkeyboard/ ADBKeyBoard | F-Droid - Free and Open Source Android App Repository
 https://developer.syn.co.in/tutorial/speech/index.html Syn Speech - Speech Recognition Library
 https://www.bostonpiezooptics.com/the-ultrasonic-transducer The Ultrasonic Transducer - Boston Piezo-Optics Inc.
 http://english.ioa.cas.cn/rh/as/201210/t20121031_94256.html Research Progress----Institute Of Acoustics Chinese Academy Of Sciences
@@ -151,16 +145,13 @@ https://github.com/musafir-py/Hidden-Friends-Finder GitHub - musafir-py/Hidden-F
 https://www.extreamsd.com/index.php/technology/usb-audio-driver USB audio driver
 https://github.com/dsward2/LocalRadio GitHub - dsward2/LocalRadio: 📻 LocalRadio is "Radio for Cord-Cutters" – a Software-Defined Radio (SDR) app for your Mac and mobile devices. With an inexpensive RTL-SDR USB device, LocalRadio provides a casual, home-based radio listening experience for your favorite local frequencies - FM broadcasts/free music/news/sports/weather/public safety & aviation scanner/etc.
 https://www.reddit.com/r/fieldrecording/comments/70siu3/dev_hires_audio_recorder_no_ads_32bit192khz/ [DEV] Hi-Res Audio Recorder (no ads, 32-bit/192kHz, multi-part WAV) on Android : fieldrecording
-https://developer.android.com/studio/command-line/logcat Logcat command-line tool  |  Android Developers
 https://account.t-mobile.com/signin/v2/ My T-Mobile Login - Pay Bills Online & Manage Your T-Mobile Account
 https://www.ketteringhealth.org/patientrelations/medicalrecords/index.cfm Medical Records | Kettering Health
 https://mychart.ketteringhealth.org/MyChartPRD/Authentication/Login?action=logout MyChart - Login Page
 https://ata.wiki.kernel.org/index.php/ATA_Secure_Erase ATA Secure Erase - ata Wiki
-https://android.stackexchange.com/questions/207965/adb-backup-and-restore-app-data-between-device-and-emulator ADB backup and restore app data between device and emulator? - Android Enthusiasts Stack Exchange
 https://opensource.samsung.com/projects Samsung Open Source
 https://tweakers.net/ Tweakers - Wij stellen technologie op de proef
 https://github.com/alvarobrey/adb-uninstall GitHub - alvarobrey/adb-uninstall: Bash script for easy uninstallation of apps through ADB
-https://github.com/khlam/debloat-samsung-android GitHub - khlam/debloat-samsung-android: ADB commands to aggressively de-bloat Samsung Android Phones without root. Make Samsung One UI closer to stock Android.
 https://www.osciprime.com/ OsciPrime - An Open Source Android Oscilloscope
 https://www.facebook.com/ Facebook - Log In or Sign Up
 https://wrc.t-mobile.com/wrcpro/home.html T-Mobile DIGITS
@@ -204,11 +195,7 @@ https://github.com/librtlsdr/librtlsdr/issues/16 rtl_tcp with Direct Sampling mo
 https://www.mathworks.com/help/supportpkg/rtlsdrradio/ug/rtlsdrreceiver.html Receive data from RTL-SDR device - Simulink
 https://www.mathworks.com/matlabcentral/fileexchange/69417-introductory-communication-systems-course-using-sdr Introductory Communication Systems Course Using SDR - File Exchange - MATLAB Central
 https://www.cyberciti.biz/faq/linux-bash-delete-all-files-in-directory-except-few/ Linux: Bash Delete All Files In Directory Except Few - nixCraft
-https://github.com/garwynn/android_device_samsung_jfltevzw GitHub - garwynn/android_device_samsung_jfltevzw: Device configuration for Samsung Galaxy S4 (Verizon variant)
 https://github.com/djrbliss/loki GitHub - djrbliss/loki: Loki: tools for custom kernels and recoveries on AT&T and Verizon Samsung Galaxy S4 and various LG devices
-https://forum.xda-developers.com/galaxy-s4-verizon/recovery-locked-pl1-5-0-safestrap-t3941198 [RECOVERY LOCKED/PL1/5.0][I545V] Safestrap R… |
-https://forum.xda-developers.com/galaxy-s4-verizon/firmware-pit-verizon-samsung-galaxy-s4-t3744871 [FIRMWARE/PIT]Verizon Samsung Galaxy S4 {SCH… |
-https://github.com/KnightWhoSayNi/android-iperf/blob/master/Dockerfile android-iperf/Dockerfile at master · KnightWhoSayNi/android-iperf · GitHub
 https://lab.dyne.org/RtlSdr RtlSdr - Dyne.org Wiki
 https://dsp.stackexchange.com/questions/30562/large-spike-at-the-center-frequency-when-using-ettus-x310 sdr - Large spike at the center frequency when using Ettus X310 - Signal Processing Stack Exchange
 https://github.com/handiko/SDR-8500khz GitHub - handiko/SDR-8500khz: GNU Radio Projects of Receiving/Post Processing (not necessarily decoding) HF Utility transmission on 8,5MHz band using RTL SDR
@@ -219,14 +206,10 @@ https://egpu.io/forums/builds/lenovo-thinkpad-t420-exp-gdc-v8-x-expresscard-vers
 https://freebsoft.org/speechd/ Speech Dispatcher - Free(B)Soft
 https://caselookup.ketteringmunicipalcourt.com/awc/Court/Default.aspx Authority Web Connect
 https://download.lineageos.org/jfltevzw LineageOS Downloads
-https://forum.xda-developers.com/htc-one/development/kernel-tharsis-t3928284 [Kernel]Tharsis[M7][Nougat] | HTC One (M7)
-https://forum.xda-developers.com/htc-one HTC One (M7)
 https://www.eevblog.com/forum/beginners/how-to-find-a-remote-control-frequency/ How to find a remote control frequency? - Page 1
 https://copradar.com/chapts/chapt7/ch7d1.html Radio and Radar Frequency Bands
 https://www.ntia.doc.gov/page/federal-government-spectrum-use-reports-225-mhz-7125-ghz Federal Government Spectrum Use Reports 225 MHz – 7.125 GHz | National Telecommunications and Information Administration
-https://www.amazon.com/gp/css/homepage.html?from=hz Amazon.com - Your Account
 https://fccid.io/ FCC ID Search
-https://k9jeb.com/JPole.aspx K9JEB - Ham Radio and Electronics
 https://github.com/daeyun/vim-matlab GitHub - daeyun/vim-matlab: Neovim plugin for MATLAB
 https://www.mathworks.com/matlabcentral/fileexchange/21798-editing-matlab-files-in-vim Editing Matlab files in Vim - File Exchange - MATLAB Central
 https://www.mathworks.com/downloads/web_downloads/download_update_installers/R2020b%20Update%201 Downloads - Download Release
@@ -239,8 +222,6 @@ https://www.gildor.org/en/projects/umodel UE Viewer | Gildor's Homepage
 http://aluigi.altervista.org/quickbms.htm Luigi Auriemma
 https://github.com/F5OEO/rpitx GitHub - F5OEO/rpitx: RF transmitter for Raspberry Pi
 https://www.instructables.com/AM-Transmitter-With-Arduino/ AM Transmitter With Arduino - Instructables
-https://www.amazon.com/dp/B00LEO4PWA/ref=twister_B00LEO4PT8?_encoding=UTF8&psc=1 Amazon.com: Thyroid Shield Light Weight Radiation Protection 0.5mm Pb Lead Equivlancy in Black: Health & Personal Care
-https://www.amazon.com/Sheet-Lead-32-24-48/dp/B001QUXAZ0/ref=sr_1_12?dchild=1&keywords=sheet+lead&qid=1605206974&sr=8-12 Sheet Lead - 1/32 inch x 24 inches x 48 inches: Metal Discs: Amazon.com: Industrial & Scientific
 http://rfmw.em.keysight.com/wireless/helpfiles/89600B/WebHelp/subsystems/gui/Content/source_using_matab.htm Using MATLAB Simulated Signals for Source Playback
 https://colab.research.google.com/drive/1f8ik5kSPEvDCcM7R_-Wb3AjifizVEsHD#scrollTo=ZAEt8AhuvNyt Natural Language Processing Lab (CODE): CC AI Ep 8 - Colaboratory
 https://www.mathworks.com/help/index.html MATLAB Documentation
@@ -248,10 +229,8 @@ https://www.digikey.com/en/products/detail/rf-solutions/AM-RT14-433P/5845720 AM-
 https://ultraray.com/calculator/rectangles/ Rectangle | Ultraray
 https://www.khanacademy.org/science/electrical-engineering Electrical engineering | Science | Khan Academy
 https://thecrashcourse.tumblr.com/downloads Crash Course - Crash Course Downloads
-https://www.amazon.com/Rhythm-War-Stormlight-Archive-Book-ebook/dp/B0826NKZHR/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=&sr= Amazon.com: Rhythm of War (The Stormlight Archive Book 4) eBook: Sanderson, Brandon: Kindle Store
 https://cloud.google.com/speech-to-text/docs/multiple-voices Separating different speakers in an audio recording
 https://cloud.google.com/speech-to-text/docs/best-practices Best practices  |  Cloud Speech-to-Text Documentation  |  Google Cloud
-https://askubuntu.com/questions/1011989/where-are-amazon-kindle-ebooks-on-my-linux-pc-after-i-download-them-for-offline Where are Amazon Kindle ebooks on my Linux PC after I download them for offline reading w/"Kindle Cloud Reader" Chrome app, & how to convert to PDF? - Ask Ubuntu
 https://www.imdb.com/list/ls022142556/ Sci-Fi/Fantasy Movies 2020 - IMDb
 https://unmannedaircraftsafetyteam.org/ Home - UAST :: Unmanned Aircraft Safety Team
 https://github.com/first20hours/google-10000-english GitHub - first20hours/google-10000-english: This repo contains a list of the 10,000 most common English words in order of frequency, as determined by n-gram frequency analysis of the Google's Trillion Word Corpus.
@@ -259,5 +238,11 @@ https://pkginfo.devuan.org/xsl-bin/policy-query.html Devuan Package View
 https://github.com/kmdm/ruuveal GitHub - kmdm/ruuveal: A HTC RUU decryption utility
 https://www.htcdev.com/devcenter/downloads HTCdev - HTC Kernel Source Code and Binaries
 https://mega.nz/folder/ndES2QyL#q9mMhMChcbIpUMm6D72X5Q MEGA
-https://forum.xda-developers.com/t/firmware-guide-m7_ul-collection-firmware-7-19-401-51.2316726/ [FIRMWARE] | [GUIDE] | [M7_UL] | Collection - Firmware | 7.19.401.51 | XDA Developers Forums
-https://forum.xda-developers.com/t/htc-one-m7-collection-of-firmware-up-to-6-06-401-1-modified-hboot-no-red-warning.2485651/ [HTC ONE M7] Collection of Firmware up to 6.06.401.1 modified HBOOT, (No Red warning) | XDA Developers Forums
+https://greasyfork.org/en Greasy Fork - safe and useful user scripts
+https://openuserjs.org/ OpenUserJS
+https://www.oreilly.com/library/view/greasemonkey-hacks/0596101651/ch01.html 1. Getting Started - Greasemonkey Hacks [Book]
+https://wiki.greasespot.net/Tutorials Tutorials - GreaseSpot Wiki
+https://www.android-x86.org/ Android-x86 - Porting Android to x86
+https://askubuntu.com/questions/78174/play-sound-through-two-or-more-outputs-devices pulseaudio - Play sound through two or more outputs/devices - Ask Ubuntu
+https://unix.stackexchange.com/questions/373122/how-to-split-ports-in-a-source-into-separate-sources-in-pulseaudio debian - How to split ports in a source into separate sources in PulseAudio? - Unix & Linux Stack Exchange
+https://forum.manjaro.org/t/how-to-separe-ports-into-different-devices-on-pulseaudio/55890/4 How to separe ports into different devices on pulseaudio? - Support / Sound - Manjaro Linux Forum

@@ -1,3 +1,5 @@
+config.load_autoconfig(False)
+
 c.new_instance_open_target = 'tab'
 c.session.default_name = 'default_session'
 c.session.lazy_restore = True
@@ -12,27 +14,25 @@ c.content.cookies.accept = 'no-3rdparty'
 c.content.cookies.store = False
 c.content.default_encoding = 'utf-8'
 c.content.desktop_capture = False
-c.content.geolocation = True
+c.content.geolocation = False
 c.content.headers.do_not_track = False
-c.content.host_blocking.enabled = True
-c.content.host_blocking.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
-c.content.host_blocking.whitelist = ['piwik.org']
 c.content.images = True
 c.content.javascript.enabled = False
 c.content.javascript.can_access_clipboard = True
 c.content.javascript.modal_dialog = False
-c.content.local_content_can_access_file_urls = False
+c.content.local_content_can_access_file_urls = True
 c.content.local_storage = False
 c.content.persistent_storage = False
 c.content.plugins = False
 c.content.print_element_backgrounds = False
 c.content.register_protocol_handler = False
-c.content.ssl_strict = True
+c.content.tls.certificate_errors = 'ask-block-thirdparty'
 c.content.user_stylesheets = '/usr/share/qutebrowser/stylesheets/no_display.css'
-c.content.mute = True
+c.content.mute = False
 c.content.canvas_reading = False
 c.content.webrtc_ip_handling_policy = 'default-public-interface-only'
-c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64) QtWebEngine/5.15.1 Chrome/80.0.3987.163'
+c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36'
+c.content.xss_auditing = True
 
 c.completion.cmd_history_max_items = 100
 c.completion.height = '60%'
@@ -63,7 +63,7 @@ c.input.spatial_navigation = False
 c.keyhint.radius = 4
 c.keyhint.delay = 0
 
-c.messages.timeout = 2000
+c.messages.timeout = 500
 
 c.prompt.filebrowser = True
 c.prompt.radius = 0
@@ -92,15 +92,15 @@ c.url.auto_search = 'naive'
 c.url.default_page = 'about:blank'
 c.url.open_base_url = True
 c.url.searchengines = {
-        'DEFAULT': 'http://en.wikipedia.org/wiki/wiki.html?search={}',
+        'DEFAULT': 'https://en.wikipedia.org/w/index.php?search={}',
         'duck': 'https://duckduckgo.com/html/?q={}',
         'google': 'https://www.google.com/search?hl=en&q={}',
         'arch': 'https://wiki.archlinux.org/?search={}',
-        'wiki': 'http://en.wikipedia.org/wiki/wiki.html?search={}',
+        'wiki': 'https://en.wikipedia.org/w/index.php?search={}',
         'aur': 'https://aur.archlinux.org/packages/?O=0&K={}',
         'pacman': 'https://www.archlinux.org/packages/?q={}',
         'git': 'https://github.com/search?q={}',
-        'pirate': 'http://www.pirate-bay.net/search?q={}',
+        'pirate': 'http://www.thepiratebay.org/search?q={}',
         'stack': 'https://stackexchange.com/search?q={}',
         'fdroid': 'https://search.f-droid.org/?q={}&lang=en',
 }
@@ -225,13 +225,21 @@ c.fonts.web.size.minimum = 8
 #with config.pattern('*://*.wright.edu/*') as p:
 #    c.content.javascript.enabled = True
 #    c.content.local_storage = True
+    
+with config.pattern('https://*.wright.edu/*') as p:
+    c.content.javascript.enabled = True
+    c.content.local_storage = True
+
+with config.pattern('https://*.bbcollab.com/*') as p:
+    c.content.javascript.enabled = True
+    c.content.local_storage = True
 
 #c.bindings.key_mappings = {'<Ctrl+[>': '<Escape>', '<Ctrl+6>': '<Ctrl+^>', '<Ctrl+m>': '<Return>', '<Ctrl+j>': '<Return>', '<Shift+Return>': '<Return>', '<Enter>': '<Return>', '<Shift+Enter>': '<Return>', '<Ctrl+Enter>': '<Ctrl+Return>', '<Ctrl+Shift+v>': '<Shift+Ins>'}
 
 
 config.bind(',f', 'set-cmd-text :fake-key -g f ; ;; set-cmd-text -s -a ; later 100 fake-key -g')
 config.bind(',r', 'spawn --userscript readability')
-#config.bind(',p', 'spawn --userscript qute-pass --no-insert-mode')
+config.bind(',p', 'spawn --userscript qute-pass --no-insert-mode')
 config.bind(',o', 'set-cmd-text -s :session-load -c')
 config.bind(',s', 'set-cmd-text -s :session-save -o')
 
@@ -256,3 +264,5 @@ config.bind('cj', 'set --temp --pattern={url:domain}/* content.javascript.enable
 config.bind('chs', 'set --temp --pattern={url:domain}/* content.local_storage true ;; reload')
 
 config.bind('ab', 'hint -r links run bookmark-add {hint-url} {hint-url}')
+
+config.bind('su', 'spawn --userscript append-to /tmp/urls');

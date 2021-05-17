@@ -1,0 +1,3 @@
+#!/bin/sh
+xrdb -load /etc/X11/xinit/xresources
+exec i3
